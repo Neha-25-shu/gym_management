@@ -5,18 +5,14 @@ class PostMailer < ApplicationMailer
   #
   #   en.post_mailer.post_created.subject
   #
-  CONTACT_EMAIL = "nehashukla199725@gmail.com"
-
-  def post_created
+  def post_created()
     @user = params[:user]
-    @greeting = "Hi"
-    attachments['python.jpg'] = File.read('app/assets/images/python.png')
+    attachments['gym.jpg'] = File.read('app/assets/images/gym.png')
     mail(
       from: "admin@gmail.com",
-      to: CONTACT_EMAIL,
-      cc: User.all.pluck(:email),
+      to: ScheduleExercise.last.user.email,
       bcc: "secreat@gmail.com",
-      subject: "Assign Exercise"
+      subject: "New Assign Exercise"
     ) 
   end
 end

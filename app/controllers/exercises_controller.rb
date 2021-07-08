@@ -36,9 +36,11 @@ class ExercisesController < ApplicationController
     end
   
     def destroy
-      @exercise.destroy
-  
-      redirect_to root_path
+      if @exercise.destroy
+        redirect_to root_path
+      else
+        render :index
+      end
     end
   
     private
