@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= @exercise.name %>
+  </h1>
+  <p class="lead">
+    <%= @exercise.description %> 
+  </p>
+  <br/>
+
+  <%= image_tag(@exercise.image_url.to_s) %>
+  <br/>
+
+
+  <video controls width="480" height="288" >
+    <source src="<%= @exercise.video_url.to_s %>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+  </video>
+  <br/>
+  <% if current_user.admin? %>
+  <%= link_to 'Edit', edit_exercise_path(@exercise), class:"btn btn-secondary" %>
+  <%= link_to 'Delete', @exercise, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  <% end %>
+    
+  <%= link_to 'Back', exercises_path, class:"btn btn-dark" %>
+</div>

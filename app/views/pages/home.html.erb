@@ -1,0 +1,17 @@
+<h1>Welcome to the home !!!</h1>
+
+
+
+<% if current_user.admin? %>
+    <%= form_with url: "/schedule_exercises/assign_exercise", method: :post do |form| %>
+      <%= select_tag 'user_id', options_for_select(@users.collect{ |u| [u.email,u.id] }) %>
+      <%= select_tag 'exercise_id', options_for_select(@exercises.collect{ |e| [e.name, e.id] }) %>
+    <%= form.submit %>
+    <% end %>
+<% elsif current_user %>
+    
+<% else %>
+
+<% end %>
+
+

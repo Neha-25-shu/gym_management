@@ -1,0 +1,41 @@
+<%= form_with model: exercise, :html => {:multipart => true} do |form| %>
+<% if exercise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
+
+      <ul>
+        <% exercise.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group" >
+    <%= form.text_field :name, class:"form-control", placeholder:" Name" %>
+  </div><br>
+
+  <div class="field form-group">
+    <%= form.text_area :description, class:"form-control" , placeholder:"Description"%><br>
+  </div><br>
+
+  <div class="field form-group">
+    <%= form.file_field :video, class:"form-control", placeholder:"Select video" %>
+  </div><br>
+
+  <div class="field form-group">
+    <%= form.file_field :image, class:"form-control", placeholder:"Select image" %>
+  </div><br>
+
+
+  <div class="field form-group">
+    <%= form.label :enabled %><br>
+    <%= form.check_box :enabled %><br>
+  </div>
+
+<br/>
+  <div class="actions">
+    <%= form.submit class:'btn btn-secondary' %>
+  </div>
+<% end %>
+
